@@ -1,0 +1,4 @@
+# Let priv_apps look up the perf2 HAL so BoostFramework (scroll/fling/launch
+# boosts) works for them. device/qcom/common ships this rule in
+# generic/vendor/priv_app.te, a directory SEPolicy.mk does not include.
+allow priv_app vendor_hal_perf2_service:service_manager find;
