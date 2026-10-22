@@ -1,4 +1,5 @@
-# Let priv_apps look up the perf2 HAL so BoostFramework (scroll/fling/launch
-# boosts) works for them. device/qcom/common ships this rule in
-# generic/vendor/priv_app.te, a directory SEPolicy.mk does not include.
-allow priv_app vendor_hal_perf2_service:service_manager find;
+# Apps targeting the latest SDK run in priv_app_36, not priv_app. device/qcom/common ships this in
+# generic/vendor/priv_app.te, a directory SEPolicy.mk does not include. Make them perf2 HAL
+# clients so BoostFramework (scroll/fling/launch boosts) works for them.
+hal_client_domain(priv_app_36, vendor_hal_perf)
+dontaudit priv_app_all vendor_hal_qspmhal_service:service_manager find;
