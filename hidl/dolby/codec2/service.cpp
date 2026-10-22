@@ -20,7 +20,7 @@ int main() {
     android::hardware::configureRpcThreadpool(8, true);
 
     // Keep the library loaded for the lifetime of the store and its components.
-    void* library = dlopen("libcodec2_store_dolby.so", RTLD_NOW | RTLD_LOCAL);
+    void* library = dlopen("c2.dolby.store.so", RTLD_NOW | RTLD_LOCAL);
     if (library == nullptr) {
         LOG(ERROR) << "Cannot load Dolby component store: " << dlerror();
         return EXIT_FAILURE;
